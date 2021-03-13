@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Vendas extends Model
 {
@@ -13,5 +14,13 @@ class Vendas extends Model
                             'funcionario_id',
                             'data_venda',
                             'valor',];
-    protected $table = 'Vendas';                        
+    protected $table = 'Vendas';  
+    public function cliente(){
+       return $this -> BelongsTo(Clientes::class, 'cliente_id');
+       
+    }   
+    
+    public function funcionario(){
+        return $this -> BelongsTo(Funcionario::class, 'funcionario_id');
+     } 
 }

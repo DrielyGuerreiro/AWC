@@ -14,5 +14,9 @@ class Funcionario    extends Model
                             'endereco',
                             'email',
                             'telefone'];
-    protected $table = 'Funcionarios';                        
-}
+    protected $table = 'funcionarios'; 
+
+    public function vendas(){
+        return $this->hasMany( Vendas::class, 'funcionario_id');
+    }
+}    
